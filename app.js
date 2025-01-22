@@ -4,6 +4,8 @@
 let amigos = [];
 let texto1 = document.querySelector("h2")
 
+
+
 function agregarAmigo()
 {
     let amigoa = document.getElementById("amigo").value;
@@ -14,6 +16,7 @@ function agregarAmigo()
         amigos.push(amigoa);
         document.querySelector("#amigo").value = '';
         console.log(amigos);
+        recorrerArreglo();
     }else 
     {
         amigoa.value = '';
@@ -25,4 +28,19 @@ function agregarAmigo()
 function sortearAmigo()
 {
     
+
+}
+
+function recorrerArreglo()
+{
+    let listaAmigos = document.getElementById("listaAmigos");
+    listaAmigos.innerHTML = "";
+    document.querySelector("#amigo").value = '';
+    for (i=0; i <= amigos.length; i++)
+    {
+        let li = document.createElement("li");
+        li.textContent = amigos[i];
+        listaAmigos.appendChild(li);
+
+    }
 }
