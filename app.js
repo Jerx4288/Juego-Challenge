@@ -3,8 +3,10 @@
 
 let amigos = [];
 let texto1 = document.querySelector("h2")
-
-
+let amigoa = document.getElementById("amigo").value;
+let listaAmigos = document.getElementById("listaAmigos");
+let ganador = document.getElementById("resultado");
+let amigoSorteado;
 
 function agregarAmigo()
 {
@@ -12,10 +14,9 @@ function agregarAmigo()
     console.log(amigoa)
     if (amigoa != null && amigoa != '')
     {
-        console.log("paso")
         amigos.push(amigoa);
+        ganador.innerHTML = '';
         document.querySelector("#amigo").value = '';
-        console.log(amigos);
         recorrerArreglo();
     }else 
     {
@@ -27,13 +28,36 @@ function agregarAmigo()
 
 function sortearAmigo()
 {
-    
+    let numeroAleatorio =  Math.floor(Math.random()*amigos.length)+1;
+    console.log(numeroAleatorio)
+    if (amigos != null)
+    {
+        amigoSorteado = amigos[numeroAleatorio];
+        console.log(amigoSorteado);
+        listaAmigos.innerHTML = '';
+        if (amigoSorteado != null)
+        {
+            ganador.innerHTML = 'El ganador es ' + amigoSorteado;
+            limpiar();
+        }else
+        {
+            alert("Por favor, inserte un nombre")
+            limpiar();
+        }
+        
+    }
 
+}
+
+function limpiar()
+{
+    document.querySelector("#amigo").value = '';
+    amigos = [];
 }
 
 function recorrerArreglo()
 {
-    let listaAmigos = document.getElementById("listaAmigos");
+    
     listaAmigos.innerHTML = "";
     document.querySelector("#amigo").value = '';
     for (i=0; i <= amigos.length; i++)
@@ -44,3 +68,5 @@ function recorrerArreglo()
 
     }
 }
+
+
